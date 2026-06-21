@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Engineering Portfolio</title>
+    <style>
+        /* CHANGE YOUR COLORS HERE */
+        :root {
+            --bg-color: #fefefe;
+            --text-main: #b49ab5;
+            --title-color: #372336; 
+        }
+
+        @font-face {
+            font-family: 'HelveticaLight';
+            src: url('HelveticaNeue-Light.otf') format('opentype');
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+        }
+
+        body { 
+            font-family: 'HelveticaLight', sans-serif; 
+            line-height: 1.5;
+            color: var(--text-main); 
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* Aligns Adrian Zhang and Nav Menu horizontally */
+        header {
+        position: sticky;
+        top: 0;
+        background: var(--bg-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+        z-index: 1000;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--title-color); 
+            letter-spacing: -0.01em;
+        }
+        /* Navigation links at the top */
+        nav a {
+            color: var(--text-main); 
+            text-decoration: none;
+            margin-left: 16px;
+            font-weight: 400;
+            font-size: 0.875rem;
+        }
+        nav a:hover {
+            color: var(--title-color);
+        }
+
+        /* Body content links (LinkedIn, Github, etc.) */
+        p a {
+            color: var(--text-main); /* Changes them from ugly blue to your dark theme color */
+            text-decoration: none;
+        }
+        p a:hover {
+            color: var(--title-color);
+            text-decoration: none; /* Fades out smoothly on hover */
+        }
+
+        section {
+            padding: 1.5rem 0;
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--title-color); 
+            margin-bottom: 1rem;
+        }
+
+        .project-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-weight: 500;
+            color: var(--title-color);
+            display: block;
+            font-size: 1rem;
+        }
+
+        .project-desc {
+            font-size: 0.875rem;
+            display: block;
+            margin-top: 0.125rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Adrian Zhang</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+        
+        <main>
+            <section id="about">
+                <h2 class="section-title">About</h2>
+                <p>Civil Engineering student specializing in environmental design and project management.</p>
+            </section>
+
+            <section id="projects">
+                <h2 class="section-title">Projects</h2>
+                <div class="project-item">
+                    <span class="project-title">Youtube Channel on Civil Engineering</span>
+                    <span class="project-desc">Analyzed structural loads and concrete stresses using finite element modeling tools.</span>
+                </div>
+                <div class="project-item">
+                    <span class="project-title">TBD</span>
+                    <span class="project-desc">Description</span>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2 class="section-title">Contact</h2>
+                <p><a href="#" onclick="navigator.clipboard.writeText('adrianzhangemail@gmail.com'); return false;">Copy email: adrianzhangemail@gmail.com</a></p>
+                <p><a href="http://linkedin.com/in/zhang-adrian">LinkedIn</a></p>
+                <p><a href="https://www.github.com/zhang-adrian/">Github</a></p>
+                <p><a href="https://www.youtube.com/@adrian_zhang">Youtube</a></p>
+                <p><a href="https://www.reddit.com/user/adrian-zhang/">Reddit</a></p>
+                <p><a href="https://x.com/adrian___zhang">X</a></p>
+                <p><a href="https://discord.com/users/310487281935056908">Discord</a></p>
+                <p><a href="">Instagram</a></p>
+                <p><a href="https://www.tiktok.com/@adrian_zhang">TikTok</a></p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
