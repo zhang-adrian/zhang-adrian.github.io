@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civil Engineering Portfolio</title>
+    <title>Adrian Zhang</title>
+    <meta name="description" content="Adrian Zhang — Civil Engineering student at the University of Toronto.">
     <style>
         /* CHANGE YOUR COLORS HERE */
         :root {
             --bg-color: #fefefe;
             --text-main: #b49ab5;
-            --title-color: #372336; 
+            --title-color: #372336;
+            --rule: #eee6ee;
         }
 
         @font-face {
@@ -17,98 +19,96 @@
             src: url('HelveticaNeue-Light.otf') format('opentype');
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg-color);
-        }
+        html { scroll-behavior: smooth; background-color: var(--bg-color); }
 
-        body { 
-            font-family: 'HelveticaLight', sans-serif; 
-            line-height: 1.5;
-            color: var(--text-main); 
+        body {
+            font-family: 'HelveticaLight', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
             padding: 2rem 1rem;
         }
 
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-        }
+        .container { max-width: 640px; margin: 0 auto; }
 
-        /* Aligns Adrian Zhang and Nav Menu horizontally */
         header {
-        position: sticky;
-        top: 0;
-        background: var(--bg-color);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-        margin-bottom: 2rem;
-        z-index: 1000;
+            position: sticky;
+            top: 0;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+            z-index: 1000;
         }
 
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--title-color); 
-            letter-spacing: -0.01em;
-        }
-        /* Navigation links at the top */
+        h1 { font-size: 1.5rem; font-weight: 600; color: var(--title-color); letter-spacing: -0.01em; }
+
         nav a {
-            color: var(--text-main); 
+            color: var(--text-main);
             text-decoration: none;
             margin-left: 16px;
-            font-weight: 400;
             font-size: 0.875rem;
         }
-        nav a:hover {
-            color: var(--title-color);
-        }
+        nav a:hover { color: var(--title-color); }
 
-        /* Body content links (LinkedIn, Github, etc.) */
-        p a {
-            color: var(--text-main); /* Changes them from ugly blue to your dark theme color */
-            text-decoration: none;
-        }
-        p a:hover {
-            color: var(--title-color);
-            text-decoration: none; /* Fades out smoothly on hover */
-        }
+        a { color: var(--title-color); text-decoration: none; border-bottom: 1px solid var(--rule); }
+        a:hover { border-bottom-color: var(--title-color); }
+        nav a, .links a, .webring a { border-bottom: none; }
 
-        section {
-            padding: 1.5rem 0;
-        }
+        .tagline { color: var(--title-color); font-size: 0.95rem; margin-bottom: 1rem; }
+
+        .intro p { margin-bottom: 0.9rem; font-size: 0.95rem; }
+
+        .links { font-size: 0.875rem; }
+        .links a { color: var(--text-main); margin-right: 12px; }
+        .links a:hover { color: var(--title-color); }
+
+        section { padding: 1.5rem 0; border-top: 1px solid var(--rule); }
+        section:first-of-type { border-top: none; }
 
         .section-title {
             font-size: 0.75rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--title-color); 
+            color: var(--title-color);
             margin-bottom: 1rem;
         }
 
-        .project-item {
-            margin-bottom: 1.5rem;
+        .item { margin-bottom: 1.25rem; }
+        .item:last-child { margin-bottom: 0; }
+
+        .row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+
+        .item-title { font-weight: 500; color: var(--title-color); font-size: 1rem; }
+        .item-org { font-size: 0.875rem; }
+        .date { font-size: 0.8rem; white-space: nowrap; }
+        .item-desc { font-size: 0.875rem; margin-top: 0.25rem; }
+
+        .plain { list-style: none; font-size: 0.875rem; }
+        .plain li { margin-bottom: 0.35rem; }
+
+        footer {
+            border-top: 1px solid var(--rule);
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
         }
 
-        .project-title {
-            font-weight: 500;
-            color: var(--title-color);
-            display: block;
-            font-size: 1rem;
-        }
+        .webring { display: flex; align-items: center; gap: 12px; }
+        .webring a { color: var(--text-main); font-size: 1.1rem; }
+        .webring a:hover { color: var(--title-color); }
+        .webring img { width: 24px; height: 24px; display: block; }
 
-        .project-desc {
-            font-size: 0.875rem;
-            display: block;
-            margin-top: 0.125rem;
+        @media (max-width: 520px) {
+            .row { flex-direction: column; gap: 0; }
+            nav a { margin-left: 10px; }
         }
     </style>
 </head>
@@ -118,42 +118,106 @@
             <h1>Adrian Zhang</h1>
             <nav>
                 <a href="#about">About</a>
+                <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </nav>
         </header>
-        
+
         <main>
-            <section id="about">
-                <h2 class="section-title">About</h2>
-                <p>Civil Engineering student specializing in environmental design and project management.</p>
+            <section id="about" class="intro">
+                <p class="tagline">Civil Engineering + PEY Co-op · University of Toronto</p>
+                <p>I'm a first-year Civil Engineering student at the <a href="https://www.utoronto.ca/">University of Toronto</a>, admitted with the W.&nbsp;J.&nbsp;T. Wright, Joey and Toby Tanenbaum, and Fred Schaeffer scholarships.</p>
+                <p>In my design course I'm working with a team of six on a redesign of Robert Street Park. Outside of class I run a factor-investing portfolio model in Google Sheets and build this website.</p>
+                <p>I speak English and Mandarin natively, plus intermediate Japanese and French.</p>
+                <p class="links">
+                    <a href="#contact">Email</a>
+                    <a href="http://linkedin.com/in/zhang-adrian">LinkedIn</a>
+                    <a href="https://www.github.com/zhang-adrian/">GitHub</a>
+                    <a href="https://www.youtube.com/@adrian_zhang">YouTube</a>
+                </p>
+            </section>
+
+            <section id="experience">
+                <h2 class="section-title">Experience</h2>
+                <div class="item">
+                    <div class="row"><span class="item-title">Team Member, APS111 Design Project</span><span class="date">Sep 2026 – Now</span></div>
+                    <div class="item-org">University of Toronto · Robert Street Park</div>
+                    <div class="item-desc">Lead documentation for a team of 6. Compiled site-visit data (temperature, noise, humidity) and proposed a low-cost shade sail canopy for the park's grass strip.</div>
+                </div>
+                <div class="item">
+                    <div class="row"><span class="item-title">Founder, Debate Team</span><span class="date">2021 – 2022</span></div>
+                    <div class="item-org">Victoria Park Collegiate Institute</div>
+                    <div class="item-desc">Started the school's debate team. 141 students came to the first meeting; built an executive team of 5 Parliamentary-style debaters.</div>
+                </div>
+                <div class="item">
+                    <div class="row"><span class="item-title">Executive, Gardening Team</span><span class="date">2021 – 2022</span></div>
+                    <div class="item-org">Victoria Park Collegiate Institute</div>
+                    <div class="item-desc">Led planting work and planned a raised bed watering system using PVC piping.</div>
+                </div>
+                <div class="item">
+                    <div class="row"><span class="item-title">Accessibility Partner</span><span class="date">Summer 2019</span></div>
+                    <div class="item-org">Reena · Vaughan</div>
+                    <div class="item-desc">141 volunteer hours supporting people with developmental disabilities, rated "Excellent Volunteer".</div>
+                </div>
+                <div class="item">
+                    <div class="row"><span class="item-title">Service Volunteer</span><span class="date">2018 – 2020</span></div>
+                    <div class="item-org">Chinese-Canadian Newcomers Association</div>
+                    <div class="item-desc">Ran festival check-in, refereed volleyball tournaments in Mandarin, and visited seniors.</div>
+                </div>
+                <div class="item">
+                    <div class="row"><span class="item-title">Math Tutor</span><span class="date">2019 – 2020</span></div>
+                    <div class="item-org">Private tutoring</div>
+                    <div class="item-desc">Weekly one-on-one tutoring; rehired for a second school year.</div>
+                </div>
             </section>
 
             <section id="projects">
                 <h2 class="section-title">Projects</h2>
-                <div class="project-item">
-                    <span class="project-title">Youtube Channel on Civil Engineering</span>
-                    <span class="project-desc">Analyzed structural loads and concrete stresses using finite element modeling tools.</span>
+                <div class="item">
+                    <div class="row"><span class="item-title">Factor Investing Portfolio</span><span class="date">2023 – Now</span></div>
+                    <div class="item-desc">A Google Sheets model applying the Fama-French five-factor model to an ETF portfolio.</div>
                 </div>
-                <div class="project-item">
-                    <span class="project-title">TBD</span>
-                    <span class="project-desc">Description</span>
+                <div class="item">
+                    <div class="row"><span class="item-title">This Website</span><span class="date">2026 – Now</span></div>
+                    <div class="item-desc">Hand-written HTML and CSS, hosted on <a href="https://github.com/zhang-adrian/zhang-adrian.github.io">GitHub Pages</a>.</div>
                 </div>
+            </section>
+
+            <section id="education">
+                <h2 class="section-title">Education &amp; Awards</h2>
+                <ul class="plain">
+                    <li><span class="item-title">BASc, Civil Engineering + PEY Co-op</span> · University of Toronto · 2026 – 2031</li>
+                    <li>OSSD, 4.0 GPA · TVO Independent Learning Centre · 2026</li>
+                    <li>IB Programme · Victoria Park Collegiate Institute · 2019 – 2022</li>
+                    <li>Admission scholarships: W.&nbsp;J.&nbsp;T. Wright, Joey and Toby Tanenbaum, Fred Schaeffer in Civil Engineering · 2026</li>
+                    <li>Community Service Award · Shanxi Chamber of Commerce · 2026</li>
+                </ul>
             </section>
 
             <section id="contact">
                 <h2 class="section-title">Contact</h2>
-                <p><a href="#" onclick="navigator.clipboard.writeText('adrianzhangemail@gmail.com'); return false;">Copy email: adrianzhangemail@gmail.com</a></p>
-                <p><a href="http://linkedin.com/in/zhang-adrian">LinkedIn</a></p>
-                <p><a href="https://www.github.com/zhang-adrian/">GitHub</a></p>
-                <p><a href="https://www.youtube.com/@adrian_zhang">Youtube</a></p>
-                <p><a href="https://www.reddit.com/user/adrian-zhang/">Reddit</a></p>
-                <p><a href="https://x.com/adrian___zhang">X</a></p>
-                <p><a href="https://discord.com/users/310487281935056908">Discord</a></p>
-                <p><a href="https://www.instagram.com/_adrianzhang/">Instagram</a></p>
-                <p><a href="https://www.tiktok.com/@adrian_zhang">TikTok</a></p>
+                <ul class="plain">
+                    <li><a href="#" onclick="navigator.clipboard.writeText('adrianzhangemail@gmail.com'); this.textContent='Copied!'; return false;">adrianzhangemail@gmail.com</a></li>
+                    <li>
+                        <a href="http://linkedin.com/in/zhang-adrian">LinkedIn</a> ·
+                        <a href="https://www.github.com/zhang-adrian/">GitHub</a> ·
+                        <a href="https://www.youtube.com/@adrian_zhang">YouTube</a> ·
+                        <a href="https://x.com/adrian___zhang">X</a> ·
+                        <a href="https://www.instagram.com/_adrianzhang/">Instagram</a>
+                    </li>
+                </ul>
             </section>
         </main>
+
+        <footer>
+            <span>© 2026 Adrian Zhang</span>
+            <div class="webring">
+                <a href="https://webring.skule.ca/#https://zhang-adrian.github.io?nav=prev" aria-label="Previous site">←</a>
+                <a href="https://webring.skule.ca/#https://zhang-adrian.github.io" target="_blank" rel="noopener"><img src="https://webring.skule.ca/img/icon.svg" alt="SKULE WebRing"></a>
+                <a href="https://webring.skule.ca/#https://zhang-adrian.github.io?nav=next" aria-label="Next site">→</a>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
