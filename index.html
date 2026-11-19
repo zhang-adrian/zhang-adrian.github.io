@@ -8,10 +8,12 @@
     <style>
         /* CHANGE YOUR COLORS HERE */
         :root {
-            --bg-color: #fefefe;
-            --text-main: #b49ab5;
-            --title-color: #372336;
-            --rule: #eee6ee;
+            --bg-color: #fafafa;
+            --text-main: #515255;
+            --muted: #758084;
+            --title-color: #233137;
+            --accent: #5d767e;
+            --rule: #cddbe1;
         }
 
         @font-face {
@@ -56,15 +58,16 @@
 
         a { color: var(--title-color); text-decoration: none; border-bottom: 1px solid var(--rule); }
         a:hover { border-bottom-color: var(--title-color); }
-        nav a, .links a, .webring a { border-bottom: none; }
+        nav a, .links a { border-bottom: none; }
 
         .tagline { color: var(--title-color); font-size: 0.95rem; margin-bottom: 1rem; }
 
         .intro p { margin-bottom: 0.9rem; font-size: 0.95rem; }
 
-        .links { font-size: 0.875rem; }
-        .links a { color: var(--text-main); margin-right: 12px; }
+        .links { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; }
+        .links a { color: var(--accent); }
         .links a:hover { color: var(--title-color); }
+        .links .sep { margin: 0 6px; }
 
         section { padding: 1.5rem 0; border-top: 1px solid var(--rule); }
         section:first-of-type { border-top: none; }
@@ -84,8 +87,8 @@
         .row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
 
         .item-title { font-weight: 500; color: var(--title-color); font-size: 1rem; }
-        .item-org { font-size: 0.875rem; }
-        .date { font-size: 0.8rem; white-space: nowrap; }
+        .item-org { font-size: 0.875rem; color: var(--accent); }
+        .date { font-size: 0.8rem; white-space: nowrap; color: var(--muted); }
         .item-desc { font-size: 0.875rem; margin-top: 0.25rem; }
 
         .plain { list-style: none; font-size: 0.875rem; }
@@ -96,15 +99,10 @@
             margin-top: 1rem;
             padding-top: 1.5rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
             font-size: 0.8rem;
+            color: var(--muted);
         }
 
-        .webring { display: flex; align-items: center; gap: 12px; }
-        .webring a { color: var(--text-main); font-size: 1.1rem; }
-        .webring a:hover { color: var(--title-color); }
-        .webring img { width: 24px; height: 24px; display: block; }
 
         @media (max-width: 520px) {
             .row { flex-direction: column; gap: 0; }
@@ -120,22 +118,25 @@
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+                <a href="#education">Education</a>
             </nav>
         </header>
 
+        <p class="tagline">Civil Engineering + PEY Co-op · University of Toronto</p>
+        <p class="links">
+            <a href="#" onclick="navigator.clipboard.writeText('adrianzhangemail@gmail.com'); this.textContent='Copied!'; return false;">adrianzhangemail@gmail.com</a><span class="sep">·</span>
+            <a href="http://linkedin.com/in/zhang-adrian">LinkedIn</a><span class="sep">·</span>
+            <a href="https://www.github.com/zhang-adrian/">GitHub</a><span class="sep">·</span>
+            <a href="https://www.youtube.com/@adrian_zhang">YouTube</a><span class="sep">·</span>
+            <a href="https://x.com/adrian___zhang">X</a><span class="sep">·</span>
+            <a href="https://www.instagram.com/_adrianzhang/">Instagram</a>
+        </p>
+
         <main>
             <section id="about" class="intro">
-                <p class="tagline">Civil Engineering + PEY Co-op · University of Toronto</p>
-                <p>I'm a first-year Civil Engineering student at the <a href="https://www.utoronto.ca/">University of Toronto</a>, admitted with the W.&nbsp;J.&nbsp;T. Wright, Joey and Toby Tanenbaum, and Fred Schaeffer scholarships.</p>
-                <p>In my design course I'm working with a team of six on a redesign of Robert Street Park. Outside of class I run a factor-investing portfolio model in Google Sheets and build this website.</p>
+                <p>I'm a first-year Civil Engineering student at the University of Toronto, admitted with the W.&nbsp;J.&nbsp;T. Wright, Joey and Toby Tanenbaum, and Fred Schaeffer scholarships.</p>
+                <p>In my design course I'm working with a team of six on a redesign of Robert Street Park. Outside of class I run a factor-investing portfolio model in Google Sheets and am planning a YouTube channel on civil engineering.</p>
                 <p>I speak English and Mandarin natively, plus intermediate Japanese and French.</p>
-                <p class="links">
-                    <a href="#contact">Email</a>
-                    <a href="http://linkedin.com/in/zhang-adrian">LinkedIn</a>
-                    <a href="https://www.github.com/zhang-adrian/">GitHub</a>
-                    <a href="https://www.youtube.com/@adrian_zhang">YouTube</a>
-                </p>
             </section>
 
             <section id="experience">
@@ -179,8 +180,12 @@
                     <div class="item-desc">A Google Sheets model applying the Fama-French five-factor model to an ETF portfolio.</div>
                 </div>
                 <div class="item">
-                    <div class="row"><span class="item-title">This Website</span><span class="date">2026 – Now</span></div>
-                    <div class="item-desc">Hand-written HTML and CSS, hosted on <a href="https://github.com/zhang-adrian/zhang-adrian.github.io">GitHub Pages</a>.</div>
+                    <div class="row"><span class="item-title">YouTube Channel on Civil Engineering</span><span class="date">Planned</span></div>
+                    <div class="item-desc">An upcoming video series about civil engineering.</div>
+                </div>
+                <div class="item">
+                    <div class="row"><span class="item-title">Personal Website</span><span class="date">2026 – Now</span></div>
+                    <div class="item-desc">This website is a personal project of mine.</div>
                 </div>
             </section>
 
@@ -195,28 +200,10 @@
                 </ul>
             </section>
 
-            <section id="contact">
-                <h2 class="section-title">Contact</h2>
-                <ul class="plain">
-                    <li><a href="#" onclick="navigator.clipboard.writeText('adrianzhangemail@gmail.com'); this.textContent='Copied!'; return false;">adrianzhangemail@gmail.com</a></li>
-                    <li>
-                        <a href="http://linkedin.com/in/zhang-adrian">LinkedIn</a> ·
-                        <a href="https://www.github.com/zhang-adrian/">GitHub</a> ·
-                        <a href="https://www.youtube.com/@adrian_zhang">YouTube</a> ·
-                        <a href="https://x.com/adrian___zhang">X</a> ·
-                        <a href="https://www.instagram.com/_adrianzhang/">Instagram</a>
-                    </li>
-                </ul>
-            </section>
         </main>
 
         <footer>
             <span>© 2026 Adrian Zhang</span>
-            <div class="webring">
-                <a href="https://webring.skule.ca/#https://zhang-adrian.github.io?nav=prev" aria-label="Previous site">←</a>
-                <a href="https://webring.skule.ca/#https://zhang-adrian.github.io" target="_blank" rel="noopener"><img src="https://webring.skule.ca/img/icon.svg" alt="SKULE WebRing"></a>
-                <a href="https://webring.skule.ca/#https://zhang-adrian.github.io?nav=next" aria-label="Next site">→</a>
-            </div>
         </footer>
     </div>
 </body>
