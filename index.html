@@ -104,6 +104,60 @@
         }
 
 
+
+        /* ---- Motion + dark mode ---- */
+        :root { color-scheme: light; --glow: rgba(93,118,126,.10); --dot: rgba(93,118,126,.18); }
+        [data-theme="dark"] {
+            color-scheme: dark;
+            --bg-color: #0e1113; --text-main: #a7b0b4; --muted: #6f7a80;
+            --title-color: #e8eef0; --accent: #8fb3bf; --rule: #232b2f;
+            --glow: rgba(143,179,191,.10); --dot: rgba(143,179,191,.12);
+        }
+        body { transition: background-color .4s ease, color .4s ease; position: relative; }
+        html, header { transition: background-color .4s ease; }
+        body::before { /* dotted grid that fades toward the edges */
+            content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+            background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+            background-size: 24px 24px;
+            -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 75%);
+            mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 75%);
+        }
+        .glow { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+            background: radial-gradient(500px circle at var(--mx,50%) var(--my,20%), var(--glow), transparent 70%); }
+        #progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--accent);
+            transform: scaleX(0); transform-origin: left; z-index: 2000; }
+
+        /* load-in: header, links, then sections stagger up */
+        @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        header, .links, #about { opacity: 0; animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+        .links { animation-delay: .12s; } #about { animation-delay: .24s; }
+        .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* hover polish */
+        .item { transition: transform .25s ease; }
+        .item:hover { transform: translateX(6px); }
+        .item:hover .item-title { color: var(--accent); }
+        .item-title { transition: color .25s ease; }
+        nav a { position: relative; transition: color .2s ease; }
+        nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: var(--title-color);
+            transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+        nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+        nav a.active { color: var(--title-color); }
+        .links a { transition: color .2s ease; }
+        header { backdrop-filter: blur(8px); }
+        #theme { background: none; border: 1px solid var(--rule); color: var(--text-main); width: 28px; height: 28px;
+            border-radius: 50%; margin-left: 16px; cursor: pointer; font-size: .8rem; line-height: 1; transition: transform .4s ease, border-color .2s; }
+        #theme:hover { transform: rotate(40deg); border-color: var(--accent); }
+        nav { display: flex; align-items: center; }
+        .caret { display: inline-block; width: 2px; height: 1em; background: var(--accent); margin-left: 3px; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            header, .links, #about, .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
         @media (max-width: 520px) {
             .row { flex-direction: column; gap: 0; }
             nav a { margin-left: 10px; }
@@ -111,6 +165,7 @@
     </style>
 </head>
 <body>
+    <div id="progress"></div><div class="glow"></div>
     <div class="container">
         <header>
             <h1>Adrian Zhang</h1>
@@ -120,6 +175,7 @@
                 <a href="#projects">Projects</a>
                 <a href="#education">Education</a>
                 <a href="Adrian_Zhang_Resume.pdf" target="_blank">Resume</a>
+                <button id="theme" aria-label="Toggle dark mode">◐</button>
             </nav>
         </header>
 
@@ -138,57 +194,57 @@
                 <p>I speak English and Mandarin natively, plus intermediate Japanese and French.</p>
             </section>
 
-            <section id="experience">
+            <section id="experience" class="reveal">
                 <h2 class="section-title">Experience</h2>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Team Member, APS111 Design Project</span><span class="date">Sep 2026 – Now</span></div>
                     <div class="item-org">University of Toronto · Robert Street Park</div>
                     <div class="item-desc">Lead documentation for a team of 6. Compiled site-visit data (temperature, noise, humidity) and proposed a low-cost shade sail canopy for the park's grass strip.</div>
                 </div>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Founder, Debate Team</span><span class="date">2021 – 2022</span></div>
                     <div class="item-org">Victoria Park Collegiate Institute</div>
                     <div class="item-desc">Started the school's debate team. 150 students came to the first meeting; built an executive team of 5 Parliamentary-style debaters.</div>
                 </div>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Executive, Gardening Team</span><span class="date">2021 – 2022</span></div>
                     <div class="item-org">Victoria Park Collegiate Institute</div>
                     <div class="item-desc">Led planting work and planned a raised bed watering system using PVC piping.</div>
                 </div>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Accessibility Partner</span><span class="date">Summer 2019</span></div>
                     <div class="item-org">Reena · Vaughan</div>
                     <div class="item-desc">141 volunteer hours supporting people with developmental disabilities, rated "Excellent Volunteer".</div>
                 </div>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Service Volunteer</span><span class="date">2018 – 2020</span></div>
                     <div class="item-org">Chinese-Canadian Newcomers Association</div>
                     <div class="item-desc">Ran festival check-in, refereed volleyball tournaments in Mandarin, and visited seniors.</div>
                 </div>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Math Tutor</span><span class="date">2019 – 2020</span></div>
                     <div class="item-org">Private tutoring</div>
                     <div class="item-desc">Weekly one-on-one tutoring; rehired for a second school year.</div>
                 </div>
             </section>
 
-            <section id="projects">
+            <section id="projects" class="reveal">
                 <h2 class="section-title">Projects</h2>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Factor Investing Portfolio</span><span class="date">2025 – Now</span></div>
                     <div class="item-desc">A Google Sheets model applying the Fama-French five-factor model to an ETF portfolio.</div>
                 </div>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">YouTube Channel on Civil Engineering</span><span class="date">Planned</span></div>
                     <div class="item-desc">An upcoming video series about civil engineering.</div>
                 </div>
-                <div class="item">
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Personal Website</span><span class="date">2026 – Now</span></div>
                     <div class="item-desc">This website is a personal project of mine.</div>
                 </div>
             </section>
 
-            <section id="education">
+            <section id="education" class="reveal">
                 <h2 class="section-title">Education &amp; Awards</h2>
                 <ul class="plain">
                     <li><span class="item-title">BASc, Civil Engineering + PEY Co-op</span> · University of Toronto · 2026 – 2031</li>
@@ -205,5 +261,45 @@
             <span>© 2026 Adrian Zhang</span>
         </footer>
     </div>
+
+    <script>
+    (function () {
+        var root = document.documentElement, saved = localStorage.getItem('theme');
+        var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        function setTheme(d) { root.setAttribute('data-theme', d ? 'dark' : 'light'); }
+        setTheme(dark);
+        document.getElementById('theme').onclick = function () {
+            dark = !dark; setTheme(dark); localStorage.setItem('theme', dark ? 'dark' : 'light');
+        };
+        // scroll-reveal, items stagger within their section
+        var io = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: .12 });
+        document.querySelectorAll('section').forEach(function (sec) {
+            sec.querySelectorAll('.item').forEach(function (it, i) { it.style.setProperty('--d', (i * 0.07) + 's'); });
+        });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+        // progress bar + active nav link
+        var bar = document.getElementById('progress'), links = [].slice.call(document.querySelectorAll('nav a[href^="#"]'));
+        function onScroll() {
+            var h = document.documentElement.scrollHeight - innerHeight;
+            bar.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')';
+            var cur = null;
+            document.querySelectorAll('main section').forEach(function (s) { if (s.getBoundingClientRect().top < innerHeight * .35) cur = s.id; });
+            links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+        }
+        addEventListener('scroll', onScroll, { passive: true }); onScroll();
+        // soft light that follows the cursor
+        var g = document.querySelector('.glow');
+        addEventListener('pointermove', function (e) { g.style.setProperty('--mx', e.clientX + 'px'); g.style.setProperty('--my', e.clientY + 'px'); });
+        // typed intro line
+        var p = document.querySelector('#about p'), full = p.textContent;
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            p.textContent = ''; var c = document.createElement('span'); c.className = 'caret'; p.appendChild(c);
+            var i = 0, t = document.createTextNode(''); p.insertBefore(t, c);
+            setTimeout(function tick() { t.data = full.slice(0, ++i); if (i < full.length) setTimeout(tick, 22); else setTimeout(function () { c.remove(); }, 1800); }, 500);
+        }
+    })();
+    </script>
 </body>
 </html>
