@@ -37,7 +37,7 @@
         header {
             position: sticky;
             top: 0;
-            background: var(--bg-color);
+            background: transparent;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -114,7 +114,7 @@
             --glow: rgba(143,179,191,.10); --dot: rgba(143,179,191,.12);
         }
         body { transition: background-color .4s ease, color .4s ease; position: relative; }
-        html, header { transition: background-color .4s ease; }
+        html { transition: background-color .4s ease; }
         body::before { /* dotted grid that fades toward the edges */
             content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
             background-image: radial-gradient(var(--dot) 1px, transparent 1px);
@@ -122,7 +122,7 @@
             -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 75%);
             mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 75%);
         }
-        .glow { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+        .glow { position: fixed; inset: 0; z-index: 1500; pointer-events: none;
             background: radial-gradient(500px circle at var(--mx,50%) var(--my,20%), var(--glow), transparent 70%); }
         #progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--accent);
             transform: scaleX(0); transform-origin: left; z-index: 2000; }
@@ -145,7 +145,9 @@
         nav a:hover::after, nav a.active::after { transform: scaleX(1); }
         nav a.active { color: var(--title-color); }
         .links a { transition: color .2s ease; }
-        header { backdrop-filter: blur(8px); }
+        header::before { content: ""; position: absolute; inset: -32px 0 -20px 0; z-index: -1; pointer-events: none;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent); mask-image: linear-gradient(to bottom, #000 55%, transparent); }
         #theme { background: none; border: 1px solid var(--rule); color: var(--text-main); width: 28px; height: 28px;
             border-radius: 50%; margin-left: 16px; cursor: pointer; font-size: .8rem; line-height: 1; transition: transform .4s ease, border-color .2s; }
         #theme:hover { transform: rotate(40deg); border-color: var(--accent); }
@@ -173,7 +175,6 @@
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
-                <a href="#education">Education</a>
                 <a href="Adrian_Zhang_Resume.pdf" target="_blank">Resume</a>
                 <button id="theme" aria-label="Toggle dark mode">◐</button>
             </nav>
@@ -190,7 +191,7 @@
 
         <main>
             <section id="about" class="intro">
-                <p>I'm an engineering student looking to study water resources and environmental engineering.</p>
+                <p>I'm a civil engineering student looking to study water resources, geotechnical, or environmental engineering.</p>
                 <p>I speak English and Mandarin natively, plus intermediate Japanese and French.</p>
             </section>
 
@@ -211,22 +212,7 @@
                     <div class="item-org">Victoria Park Collegiate Institute</div>
                     <div class="item-desc">Led planting work and planned a raised bed watering system using PVC piping.</div>
                 </div>
-                <div class="item reveal">
-                    <div class="row"><span class="item-title">Accessibility Partner</span><span class="date">Summer 2019</span></div>
-                    <div class="item-org">Reena · Vaughan</div>
-                    <div class="item-desc">141 volunteer hours supporting people with developmental disabilities, rated "Excellent Volunteer".</div>
-                </div>
-                <div class="item reveal">
-                    <div class="row"><span class="item-title">Service Volunteer</span><span class="date">2018 – 2020</span></div>
-                    <div class="item-org">Chinese-Canadian Newcomers Association</div>
-                    <div class="item-desc">Ran festival check-in, refereed volleyball tournaments in Mandarin, and visited seniors.</div>
-                </div>
-                <div class="item reveal">
-                    <div class="row"><span class="item-title">Math Tutor</span><span class="date">2019 – 2020</span></div>
-                    <div class="item-org">Private tutoring</div>
-                    <div class="item-desc">Weekly one-on-one tutoring; rehired for a second school year.</div>
-                </div>
-            </section>
+                </section>
 
             <section id="projects" class="reveal">
                 <h2 class="section-title">Projects</h2>
@@ -242,17 +228,6 @@
                     <div class="row"><span class="item-title">Personal Website</span><span class="date">2026 – Now</span></div>
                     <div class="item-desc">This website is a personal project of mine.</div>
                 </div>
-            </section>
-
-            <section id="education" class="reveal">
-                <h2 class="section-title">Education &amp; Awards</h2>
-                <ul class="plain">
-                    <li><span class="item-title">BASc, Civil Engineering + PEY Co-op</span> · University of Toronto · 2026 – 2031</li>
-                    <li>OSSD, 4.0 GPA · TVO Independent Learning Centre · 2026</li>
-                    <li>IB Programme · Victoria Park Collegiate Institute · 2019 – 2022</li>
-                    <li>Admission scholarships: W.&nbsp;J.&nbsp;T. Wright, Joey and Toby Tanenbaum, Fred Schaeffer in Civil Engineering · 2026</li>
-                    <li>Community Service Award · Shanxi Chamber of Commerce · 2026</li>
-                </ul>
             </section>
 
         </main>
