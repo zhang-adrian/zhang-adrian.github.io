@@ -158,7 +158,17 @@
             header, .links, #about, .reveal { opacity: 1 !important; transform: none !important; }
         }
 
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+        .gallery figure { margin: 0; }
+        .gallery .wide { grid-column: 1 / -1; }
+        .gallery img { width: 100%; display: block; border-radius: 6px; border: 1px solid var(--rule); }
+        .gallery .photo img { aspect-ratio: 4 / 3; object-fit: cover; }
+        .gallery figcaption { font-size: .75rem; color: var(--muted); margin-top: 5px; }
+        .chart-dark { display: none !important; }
+        [data-theme="dark"] .chart-light { display: none !important; }
+        [data-theme="dark"] .chart-dark { display: block !important; }
         @media (max-width: 520px) {
+            .gallery { grid-template-columns: 1fr; }
             .row { flex-direction: column; gap: 0; }
             nav a { margin-left: 10px; }
         }
@@ -189,42 +199,53 @@
 
         <main>
             <section id="about" class="intro">
-                <p>I'm a civil engineering student looking to study water resources, geotechnical, or environmental engineering.</p>
+                <p>First-year Civil Engineering student at the University of Toronto, looking for summer 2027 field roles in water resources, geotechnical, or environmental engineering.</p>
                 <p>I speak English and Mandarin natively, plus intermediate Japanese and French.</p>
             </section>
 
             <section id="experience" class="reveal">
                 <h2 class="section-title">Experience</h2>
                 <div class="item reveal">
-                    <div class="row"><span class="item-title">Team Member, APS111 Design Project</span><span class="date">Sep 2026 – Now</span></div>
-                    <div class="item-org">University of Toronto · Robert Street Park</div>
-                    <div class="item-desc">Lead documentation for a team of 6. Compiled site-visit data (temperature, noise, humidity) and proposed a low-cost shade sail canopy for the park's grass strip.</div>
-                </div>
-                <div class="item reveal">
                     <div class="row"><span class="item-title">Founder, Debate Team</span><span class="date">2021 – 2022</span></div>
                     <div class="item-org">Victoria Park Collegiate Institute</div>
-                    <div class="item-desc">Started the school's debate team. 150 students came to the first meeting; built an executive team of 5 Parliamentary-style debaters.</div>
+                    <div class="item-desc">Started the school's debate team. Drew 150 students to the first meeting, built an executive team of 5 Parliamentary-style debaters, and kept about 50 active members all year.</div>
                 </div>
                 <div class="item reveal">
                     <div class="row"><span class="item-title">Executive, Gardening Team</span><span class="date">2021 – 2022</span></div>
                     <div class="item-org">Victoria Park Collegiate Institute</div>
-                    <div class="item-desc">Led planting work and planned a raised bed watering system using PVC piping.</div>
+                    <div class="item-desc">Designed and built an automatic PVC-pipe watering system, fed by a sprinkler, for the school garden plot.</div>
                 </div>
                 </section>
 
             <section id="projects" class="reveal">
                 <h2 class="section-title">Projects</h2>
                 <div class="item reveal">
+                    <div class="row"><span class="item-title">Robert Street Park Design (APS111)</span><span class="date">Sep 2026 – Now</span></div>
+                    <div class="item-org">University of Toronto · Team of 6</div>
+                    <div class="item-desc">Collected field data on 3 outdoor site visits (air and surface temperature, light, noise, tree sizes, park use) and compiled it into a shared dataset, earning 88% on the project requirements. Led documentation for all 3 team deliverables. Modelled the existing site in SketchUp.</div>
+                    <div class="gallery">
+                        <figure class="wide">
+                            <img class="chart-light" src="img/chart-light.png" alt="Chart: surfaces in the sun were 7 to 13 degrees C hotter than the same surfaces in shade" loading="lazy">
+                            <img class="chart-dark" src="img/chart-dark.png" alt="Chart: surfaces in the sun were 7 to 13 degrees C hotter than the same surfaces in shade" loading="lazy">
+                            <figcaption>Midday visit, Oct 19: the same surface was 7–13 °C hotter in sun than in shade (IR thermometer).</figcaption>
+                        </figure>
+                        <figure class="wide">
+                            <img src="img/park-model.jpg" alt="SketchUp 3D model of Robert Street Park" loading="lazy">
+                            <figcaption>SketchUp model of the existing park, built from site measurements.</figcaption>
+                        </figure>
+                        <figure class="photo">
+                            <img src="img/park-seating.jpg" alt="Stone block seating and mural wall at Robert Street Park" loading="lazy">
+                            <figcaption>Stone seating and mural wall, site visit 1.</figcaption>
+                        </figure>
+                        <figure class="photo">
+                            <img src="img/park-canopy.jpg" alt="Underside of the perforated green shade canopy" loading="lazy">
+                            <figcaption>Perforated shade canopy: about 40% open, so it lets sun through.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="item reveal">
                     <div class="row"><span class="item-title">Factor Investing Portfolio</span><span class="date">2025 – Now</span></div>
                     <div class="item-desc">A Google Sheets model applying the Fama-French five-factor model to an ETF portfolio.</div>
-                </div>
-                <div class="item reveal">
-                    <div class="row"><span class="item-title">YouTube Channel on Civil Engineering</span><span class="date">Planned</span></div>
-                    <div class="item-desc">An upcoming video series about civil engineering.</div>
-                </div>
-                <div class="item reveal">
-                    <div class="row"><span class="item-title">Personal Website</span><span class="date">2026 – Now</span></div>
-                    <div class="item-desc">This website is a personal project of mine.</div>
                 </div>
             </section>
 
