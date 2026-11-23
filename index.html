@@ -143,9 +143,9 @@
         nav a:hover::after, nav a.active::after { transform: scaleX(1); }
         nav a.active { color: var(--title-color); }
         .links a { transition: color .2s ease; }
-        header::before { content: ""; position: absolute; inset: -32px 0 -20px 0; z-index: -1; pointer-events: none;
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent); mask-image: linear-gradient(to bottom, #000 55%, transparent); }
+        header::before { content: ""; position: absolute; top: -32px; bottom: -20px; left: 50%; width: 100vw; transform: translateX(-50%);
+            z-index: -1; pointer-events: none; background: linear-gradient(to bottom, var(--bg-color) 65%, transparent); }
+        html { overflow-x: clip; }
         #theme { background: none; border: 1px solid var(--rule); color: var(--text-main); width: 28px; height: 28px;
             border-radius: 50%; margin-left: 16px; cursor: pointer; font-size: .8rem; line-height: 1; transition: transform .4s ease, border-color .2s; }
         #theme:hover { transform: rotate(40deg); border-color: var(--accent); }
