@@ -124,8 +124,6 @@
         }
         .glow { position: fixed; inset: 0; z-index: 1500; pointer-events: none;
             background: radial-gradient(500px circle at var(--mx,50%) var(--my,20%), var(--glow), transparent 70%); }
-        #progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--accent);
-            transform: scaleX(0); transform-origin: left; z-index: 2000; }
 
         /* load-in: header, links, then sections stagger up */
         @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
@@ -167,7 +165,7 @@
     </style>
 </head>
 <body>
-    <div id="progress"></div><div class="glow"></div>
+    <div class="glow"></div>
     <div class="container">
         <header>
             <h1>Adrian Zhang</h1>
@@ -254,11 +252,9 @@
             sec.querySelectorAll('.item').forEach(function (it, i) { it.style.setProperty('--d', (i * 0.07) + 's'); });
         });
         document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-        // progress bar + active nav link
-        var bar = document.getElementById('progress'), links = [].slice.call(document.querySelectorAll('nav a[href^="#"]'));
+        // active nav link
+        var links = [].slice.call(document.querySelectorAll('nav a[href^="#"]'));
         function onScroll() {
-            var h = document.documentElement.scrollHeight - innerHeight;
-            bar.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')';
             var cur = null;
             document.querySelectorAll('main section').forEach(function (s) { if (s.getBoundingClientRect().top < innerHeight * .35) cur = s.id; });
             links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
